@@ -1,13 +1,13 @@
 # administracion/views.py
 from django.urls import reverse_lazy
-from django.views import generic
+from django.views.generic import ListView, CreateView, UpdateView, DetailView, TemplateView
 from django.views.generic.edit import FormView
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, CustomUserChangeForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login
-from django.http.response import HttpResponseRedirect
+from .models import CustomUser
 
-class SignUp(generic.CreateView):
+class SignUp(CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('login')
     template_name = 'signup.html'
@@ -32,3 +32,26 @@ class Login(FormView):
                 return super(Login, self).dispatch(request, *args, **kwargs)
 """
 
+
+class Inicio(TemplateView):
+    template_name = "home.html"
+
+class ListadoUsuarios(ListView):
+    model = CustomUser
+    template_name = 'usuarios/usuarios.html'
+    context_object_name = 'usuarios'
+
+class CrearUsuario(CreateView):
+    template_name = 'usuarios/usuario.html'
+    form_class = CustomUserCreationForm
+    success_url = reverse_lazy('listado_usuarios')
+
+class ModificarUsuario(UpdateView):
+    model = CustomUser
+    template_name = 'usuarios/modificar_usuario.html'
+    form_class = CustomUserChangeForm
+    success_url = reverse_lazy('listado_usuarios')
+
+class DetalleUsuario(DetailView):
+    model = CustomUser
+    template_name = 'usuarios/detalle_usuario.html'

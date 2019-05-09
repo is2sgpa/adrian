@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Usuarios</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Detalle de Usuario
+            </div>
+            <div class="panel-body">
+                <div class='form-group'>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>USERNAME:</label>
+                            <p>{{ object.username }}</p>
+                            <label>EMAIL:</label>
+                            <p>{{ object.email }}</p>
+                            <label>NOMBRE:</label>
+                            <p>{{ object.nombre }}</p>
+                            <label>APELLIDO:</label>
+                            <p>{{ object.apellido }}</p>
+                            <label>DIRECCION: </label>
+                            <p>{{ object.direccion }}</p>
+                            <label>TELEFONO: </label>
+                            <p>{{ object.telefono }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
