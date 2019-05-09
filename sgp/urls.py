@@ -19,9 +19,12 @@ from django.urls import path, include
 from django.views.generic.base import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
+from administracion.views import Login
+from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name='home.html'), name='home'),
+   path('', Login.as_view(), name='login'),
+    path('home', login_required(TemplateView.as_view(template_name='home.html')), name='home'),
     path('admin/', admin.site.urls),
     path('administracion/', include('administracion.urls')),
     path('administracion/', include('django.contrib.auth.urls')),

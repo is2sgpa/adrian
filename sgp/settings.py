@@ -132,5 +132,6 @@ STATICFILES_DIRS = (
 
 AUTH_USER_MODEL = 'administracion.CustomUser'
 
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = '/'
+LOGIN_REDIRECT_URL = ''
 LOGOUT_REDIRECT_URL = 'home'
