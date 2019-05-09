@@ -28,3 +28,10 @@ class Proyectos(TemplateView):
     model = Proyecto
     template_name = 'definicion/proyectos.html'
     context_object_name = 'proyectos'
+"""
+class AgregarMiembros(generic.CreateView):
+
+    form_class = AgregarMiembro
+    template_name = 'definicion/miembros.html'
+    context_object_name = 'miembros'
+"""

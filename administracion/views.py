@@ -16,17 +16,19 @@ class Login(FormView):
         # Establecemos la plantilla a utilizar
         template_name = 'registration/login.html'
         form_class = AuthenticationForm
-        success_url = reverse_lazy("home.html")
-
-        def dispatch(self, request, *args, **kwargs):
-            # Si el usuario está autenticado entonces nos direcciona a la url establecida en success_url
-            if request.user.is_authenticated():
-                return HttpResponseRedirect(self.get_success_url())
-            # Sino lo está entonces nos muestra la plantilla del login simplemente
-            else:
-                return super(Login, self).dispatch(request, *args, **kwargs)
-
+        success_url = reverse_lazy('home')
 
         def form_valid(self, form):
             login(self.request, form.get_user())
             return super(Login, self).form_valid(form)
+
+"""
+        def dispatch(self, request, *args, **kwargs):
+            # Si el usuario está autenticado entonces nos direcciona a la url establecida en success_url
+            if request.user.is_authenticated():
+                return HttpResponseRedirect(stemporal96elf.get_success_url())
+            # Sino lo está entonces nos muestra la plantilla del login simplemente
+            else:
+                return super(Login, self).dispatch(request, *args, **kwargs)
+"""
+

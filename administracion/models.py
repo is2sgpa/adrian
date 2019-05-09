@@ -7,9 +7,10 @@ class CustomUser(AbstractUser):
     apellido = models.CharField(max_length=20, null=True)
     direccion=models.CharField(max_length=50, null=True)
     telefono=models.IntegerField(default=0000)
+    estado_activo=models.BooleanField(default=True)
 
     def get_nombre(self):
-        return self.nombre
+        return self.username
 
     def __str__(self):
         return self.get_nombre()

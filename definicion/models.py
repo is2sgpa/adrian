@@ -1,13 +1,13 @@
 from django.db import models
-from django.conf import  settings
 from django.contrib.auth import get_user_model
+from django.contrib.auth.models import AbstractUser
+from administracion.models import CustomUser
 
 class Proyecto(models.Model):
 
     nombre=models.CharField(max_length=20, default='', null=False)
     fecha_inicio=models.DateField()
     fecha_fin=models.DateField()
-    miembros=models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, null=True)
     descripcion_breve=models.CharField(max_length=100)
     descripcion_detallada=models.TextField(max_length=500)
 
@@ -23,3 +23,10 @@ class Proyecto(models.Model):
 
     def __str__(self):
         return self.get_nombre()
+
+class Miembro():
+    proyecto=models.ForeignKey(Proyecto, null=False, on_delete=models.CASCADE)
+    usuario=models.ForeignKey(CustomUser, null=False, on_delete=models.CASCADE)
+
+    def _str_(self):
+        return self.usuario.username

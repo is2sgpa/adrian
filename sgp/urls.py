@@ -23,7 +23,7 @@ from administracion.views import Login
 from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
-   path('', Login.as_view(), name='login'),
+   path('', Login.as_view(template_name= 'registration/login.html'), name='login'),
     path('home', login_required(TemplateView.as_view(template_name='home.html')), name='home'),
     path('admin/', admin.site.urls),
     path('administracion/', include('administracion.urls')),
