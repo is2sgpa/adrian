@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'administracion.apps.AdministracionConfig',
     'definicion.apps.DefinicionConfig',
     'ejecucion.apps.EjecucionConfig',
+    'ejecucion.UserStory',
 ]
 
 MIDDLEWARE = [
