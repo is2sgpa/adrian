@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'administracion.apps.AdministracionConfig',
     'definicion.apps.DefinicionConfig',
     'ejecucion.apps.EjecucionConfig',
+    'guardian',
+    'django.contrib.admindocs',
+    'reversion',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +53,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'guardian.backends.ObjectPermissionBackend',
+)
 
 ROOT_URLCONF = 'sgp.urls'
 

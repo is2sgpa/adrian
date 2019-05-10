@@ -15,12 +15,13 @@ Including another URLconf
 """
 # sgp/urls.py
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from django.views.generic.base import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
 from administracion.views import Login, Inicio
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import auth_logout
 
 urlpatterns = [
    path('', Login.as_view(template_name= 'registration/login.html'), name='login'),

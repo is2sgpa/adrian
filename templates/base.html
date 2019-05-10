@@ -35,6 +35,11 @@
                         <span class="glyphicon glyphicon-user"></span> Proyectos
                     </a>
                 </div>
+                <div class="navbar-right">
+                    <a class="navbar-brand" href="{% url 'logout' %}">
+                        <span class="glyphicon glyphicon-log-out"></span> Salir
+                    </a>
+                </div>
                 {% block menu %}
                 {% endblock menu %}
             </nav>

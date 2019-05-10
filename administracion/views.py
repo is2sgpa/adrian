@@ -1,4 +1,5 @@
 # administracion/views.py
+from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DetailView, TemplateView
 from django.views.generic.edit import FormView
@@ -18,19 +19,18 @@ class Login(FormView):
         form_class = AuthenticationForm
         success_url = reverse_lazy('home')
 
-        def form_valid(self, form):
-            login(self.request, form.get_user())
-            return super(Login, self).form_valid(form)
-
-"""
         def dispatch(self, request, *args, **kwargs):
             # Si el usuario está autenticado entonces nos direcciona a la url establecida en success_url
-            if request.user.is_authenticated():
-                return HttpResponseRedirect(stemporal96elf.get_success_url())
+            if request.user.is_authenticated:
+                return HttpResponseRedirect(self.get_success_url())
             # Sino lo está entonces nos muestra la plantilla del login simplemente
             else:
                 return super(Login, self).dispatch(request, *args, **kwargs)
-"""
+
+
+        def form_valid(self, form):
+            login(self.request, form.get_user())
+            return super(Login, self).form_valid(form)
 
 
 class Inicio(TemplateView):
